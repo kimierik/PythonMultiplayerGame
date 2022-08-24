@@ -27,7 +27,7 @@ class p2data:
 #add server feature afterward when everything is more clean
 
 #ip port protocoll
-client=client.client("localhost",9999,"utf-8")
+client=client.client(input("give ip addres of server : "),9999,"utf-8")
 user2=p2data()
 
 
