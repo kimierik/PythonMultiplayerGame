@@ -23,6 +23,18 @@ other player must type what ever local ipv4 address the host computer is running
 
 
 
+NEEDED PIP PACKAGES
+
+just run "pip3 install *package_name*"
+
+json
+sockets
+pygame
+threading
+
+
+
+
 
 
 
@@ -31,4 +43,5 @@ KNOWN ISSUES
 player2 starts running to player1's starting location as soon as the game starts
 this happens player2 whinks they are player1. which it tecnically is
 
+"minor" desync issues
 
