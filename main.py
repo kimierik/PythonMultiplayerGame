@@ -24,7 +24,6 @@ class p2data:
 
 #todo
 #clean unused code
-#add server feature afterward when everything is more clean
 
 #ip port protocoll
 client=client.client(input("give ip addres of server : "),9999,"utf-8")
@@ -100,16 +99,7 @@ def ReceiveInput():
 
 
 
-#something is severely fucked with movement
-#something takes realtime mouse x,y when moving on multiplayer
-#stops moving when y or x is correct otherwise keeps moving realtime
-#does not happen on client it self so something is wrong
-#idk what
 
-
-#it migth be calling Goto in realtime and not on mouse press
-#but moving to should only be updated when the other client presses mouse
-#problem is most likely in modules/assets tank class implementation
 #
 
 
@@ -199,31 +189,6 @@ def main():#main game loop duh
             test2.fire()
         test2.server_goto(user2.playerOutputData["MovingTo"])
         test2.MouseLookAngle(user2.playerOutputData["Mpos"])
-#this "if" monstrosity checks when buttons are pressed
-        """"
-        if pressed[pygame.K_a]:
-            test1.turn(-turnvalue)
-        if pressed[pygame.K_d]:
-            test1.turn(turnvalue)
-        if pressed[pygame.K_w]:
-            test1.move(movevalue)
-        if pressed[pygame.K_s]:
-            test1.move(-movevalue)
-        if pressed[pygame.K_f]:
-            test1.fire()
-            
-        
-        if pressed[pygame.K_RIGHT]:
-            test2.turn(turnvalue) 
-        if pressed[pygame.K_LEFT]:
-            test2.turn(-turnvalue)
-        if pressed[pygame.K_UP]:
-            test2.move(movevalue)
-        if pressed[pygame.K_DOWN]:
-            test2.move(-movevalue)
-        if pressed[pygame.K_l]:
-            test2.fire()
-        """
 
     pygame.quit()
 
