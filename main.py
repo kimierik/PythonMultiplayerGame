@@ -112,6 +112,7 @@ def main():#main game loop duh
     #setting up random stuff 
     playerInputData={"Mpos":[0,0],"fire":0,"MovingTo":[0,0]}
     playerdata=load_map()
+    #contains list of lists with both player starting locations [[x,y],[x,y]]
     run =True
 
 
@@ -122,12 +123,13 @@ def main():#main game loop duh
     if player=="0":
         p1=playerdata[0]#player 1 position is index 0 of playerdata
         p2=playerdata[1]
-        user2.playerOutputData["MovingTo"]=p2
+        #we need to update moving to so players dont move to 0,0 on game start 
     else:
         p1=playerdata[1]#player 1 position is index 0 of playerdata
         p2=playerdata[0]
-        user2.playerOutputData["MovingTo"]=p1
 
+    user2.playerOutputData["MovingTo"]=p2
+    playerInputData["MovingTo"]=p1
 
 
 
