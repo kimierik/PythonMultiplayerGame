@@ -1,3 +1,5 @@
+##intro
+
 this is a simple multiplayer pvp game made in python
   
 this project is work in progress so everything does not work yet
@@ -23,7 +25,7 @@ other player must type what ever local ipv4 address the host computer is running
 
 
   
-NEEDED PIP PACKAGES
+##NEEDED PIP PACKAGES
 
 just run "pip3 install *package_name*"
 
@@ -38,10 +40,12 @@ threading
 
 
 
-KNOWN ISSUES
+##KNOWN ISSUES
+    
+your model runs off on the other client.
+this can be "fixed" by trying to sync the models, by looking at the other players screen and trying to move approprietly
   
-player2 starts running to player1's starting location as soon as the game starts
-this happens player2 whinks they are player1. which it tecnically is
+  
   
 "minor" desync issues
 
