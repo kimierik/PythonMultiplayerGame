@@ -98,6 +98,9 @@ def ReceiveInput():
             rUn=False
 
 
+def ask_player_index():
+    return client.s.recv(1024).decode(client.proto)
+
 
 
 #
@@ -108,14 +111,28 @@ def main():#main game loop duh
 
     #setting up random stuff 
     playerInputData={"Mpos":[0,0],"fire":0,"MovingTo":[0,0]}
-
-
     playerdata=load_map()
-    p1=playerdata[0]#player 1 position is index 0 of playerdata
-    p2=playerdata[1]
-    user2.playerOutputData["MovingTo"]=p2
     run =True
+
+
+    player = ask_player_index()#function determines if this client is player 1 or 2
+    print(player)
+    #0 means p1
+    #1 means p2
+    if player=="0":
+        p1=playerdata[0]#player 1 position is index 0 of playerdata
+        p2=playerdata[1]
+        user2.playerOutputData["MovingTo"]=p2
+    else:
+        p1=playerdata[1]#player 1 position is index 0 of playerdata
+        p2=playerdata[0]
+        user2.playerOutputData["MovingTo"]=p1
+
+
+
+
     config.WIN.fill(config.white)
+
     test1=assets.tank(p1[0],p1[1],90)
     test2=assets.tank(p2[0],p2[1],180)
     config.playerlist.append(test1)
@@ -124,6 +141,8 @@ def main():#main game loop duh
 
     
     commands=client.s.recv(1024).decode(client.proto)
+    #this waits untill both players have connected
+    #"asd" is gotten from the server and then we can continue to start the threads and mainloop
 
 
     thread=threading.Thread(target=ReceiveInput)

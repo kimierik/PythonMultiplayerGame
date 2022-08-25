@@ -74,10 +74,12 @@ def main():
         client.send(json.dumps(mapload()).encode(prot))
         print("mapdata sent")
         clients.append(client)
+        client.send(str(clients.index(client)).encode(prot))
         print(len(clients))
         if len(clients)==2:
             for person in clients:
                 person.send("asd".encode(prot))
+                #sets off players 
                 thread=threading.Thread(target=thread_connection,args=(person,))
                 thread.start()
     #pipe the client connection to the threaded connectiuon and make some function to send data between the two cunts
