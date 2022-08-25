@@ -1,4 +1,4 @@
-##intro
+## intro
 
 this is a simple multiplayer pvp game made in python
   
@@ -25,7 +25,7 @@ other player must type what ever local ipv4 address the host computer is running
 
 
   
-##NEEDED PIP PACKAGES
+## NEEDED PIP PACKAGES
 
 just run "pip3 install *package_name*"
 
@@ -40,12 +40,8 @@ threading
 
 
 
-##KNOWN ISSUES
+## KNOWN ISSUES
     
-your model runs off on the other client.
-this can be "fixed" by trying to sync the models, by looking at the other players screen and trying to move approprietly
-  
-  
   
 "minor" desync issues
 
