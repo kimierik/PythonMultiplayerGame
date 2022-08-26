@@ -27,7 +27,7 @@ level editor
 ## making a map
 
 <p>
-<img src="images/leveldemo1.png" width ="500" alt="">
+<img src="images/leveldemo1.png"  alt="">
 </p>
   
 this is the level editor
