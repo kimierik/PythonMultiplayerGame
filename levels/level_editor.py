@@ -38,6 +38,10 @@ class wall:
         rect=pygame.Rect(self.x, self.y, self.w, self.h)
         pygame.draw.rect(win,black,rect)
 
+    def findwall(self,mx,my):
+        if mx>=self.x and mx < self.x+self.w:
+            if my>self.y and my <self.y+self.h:
+                return True
 
 
     def setsize(self,mousex,mousey,bol):
@@ -95,12 +99,18 @@ class user_interface:
                 "h":self.BoxSize,
                 }
 
+        self.remove_btn={"x":width/2-self.BoxSize,
+                "y":600+self.BoxSize,
+                "w":self.BoxSize,
+                "h":self.BoxSize,
+                }
         
 
 
         self.player1_btn=pygame.Rect(self.p1_btn["x"],self.p1_btn["y"],self.p1_btn["w"],self.p1_btn["h"])
         self.player2_btn=pygame.Rect(self.p2_btn["x"],self.p2_btn["y"],self.p2_btn["w"],self.p2_btn["h"])
         self.wall_btnrect=pygame.Rect(self.wall_btn["x"],self.wall_btn["y"],self.wall_btn["w"],self.wall_btn["h"])
+        self.remove_btn_rect=pygame.Rect(self.remove_btn["x"],self.remove_btn["y"],self.remove_btn["w"],self.remove_btn["h"])
 
 
     def render(self):
@@ -110,6 +120,7 @@ class user_interface:
         pygame.draw.rect(win,red,self.player1_btn)
         pygame.draw.rect(win,blue,self.player2_btn)
         pygame.draw.rect(win,black,self.wall_btnrect)
+        pygame.draw.rect(win,white,self.remove_btn_rect)
 
 
     def use_buttons(self,x,y):
@@ -126,6 +137,10 @@ class user_interface:
         if x>=self.wall_btn["x"] and x<=self.wall_btn["x"]+self.wall_btn["w"]:
             if  y>=self.wall_btn["y"] and y<=self.wall_btn["y"]+self.wall_btn["h"]:
                 self.ChosenObject="wall"
+
+        if x>=self.remove_btn["x"] and x<=self.remove_btn["x"]+self.remove_btn["w"]:
+            if  y>=self.remove_btn["y"] and y<=self.remove_btn["y"]+self.remove_btn["h"]:
+                self.ChosenObject="remove"
         print(self.ChosenObject)
        
 
@@ -195,11 +210,6 @@ def main():
                 mx,my=pygame.mouse.get_pos()
                 if my >=600:
                     ui.use_buttons(mx,my)
-                    #mover these to else statement
-                    if ui.ChosenObject=="p1":
-                        print("p1")
-                    if ui.ChosenObject=="p2":
-                        print("p2")
 
                 else:
                     if ui.ChosenObject=="p1":
@@ -208,6 +218,15 @@ def main():
                     if ui.ChosenObject=="p2":
                         player2.x=mx
                         player2.y=my
+                    if ui.ChosenObject=="remove":
+                        for wal in walls:
+                            #it is wal bc i use too many variables in this scope
+                            #if wall then remove it
+                            if wal.findwall(mx,my):
+                                #print(wal.name)
+                                walls.remove(wal)
+
+
                     if ui.ChosenObject=="wall":
                         bol+=1#we should not add more wall objcts white we are trying to make the first one
 
@@ -235,7 +254,8 @@ def main():
 
         if len(walls)>=1:
             mx,my=pygame.mouse.get_pos()
-            walls[runval-1].setsize(mx,my,bol)
+            #updates the latest added wall to wall list so we can change the shape
+            walls[-1].setsize(mx,my,bol)
 
         if bol ==1:#dirty fix for less button presses.
             bol+=1
