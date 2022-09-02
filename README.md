@@ -41,10 +41,12 @@ move this json file to the same folder as server.py
 
 
 ## getting the game working
-first you must start server.py, then connect the clients, when you start client.py you will get an empty window  
+change "localhost" in server.py to whatever ip the server is being hosted on.
+ip can be gotten form ipconfig/ifconfig
+
+start server.py, then connect the clients, when you start client.py you will get an empty window  
 and the terminal will prompt you to enter an ip address. if the server is hosted on the same network as the clients  
 you need to type the local ipv4 address of the server, which can be gotten from ipconfig/ifconfig  
-if you are hosting the server on the same computer as one of the clients you need to enter "localhost"
 when both players are connected you can styart playing  
 mouse click to move and "f" to fire
   
