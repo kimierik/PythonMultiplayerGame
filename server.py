@@ -3,13 +3,18 @@ import socket
 import threading
 import json
 
+
+p=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+p.connect(("8.8.8.8",80))
+localip=p.getsockname()[0]
+p.close()
+
+
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-ip=socket.gethostbyname("localhost")
-ip="localhost"
+ip=socket.gethostbyname( localip)
 port=9999
 mapdict={}
 prot="utf_8"
-
 
 clients=[]#list of both the clients
 
@@ -18,6 +23,7 @@ clients=[]#list of both the clients
 try:
     s.bind((ip,port))
     print("server is listening")
+    print("hosting on ",ip)
 except socket.error as e :
     print("error binding to port")
     print(e)
