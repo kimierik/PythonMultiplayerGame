@@ -4,10 +4,14 @@ import threading
 import json
 
 
-p=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-p.connect(("8.8.8.8",80))
-localip=p.getsockname()[0]
-p.close()
+try:
+    p=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+    p.connect(("8.8.8.8",80))
+    localip=p.getsockname()[0]
+    p.close()
+except:
+    print("unable to find ivp4 address automatically")
+    localip=input("enter ipv4 address")
 
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
